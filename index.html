@@ -7,25 +7,25 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
     body { background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 48px 20px; }
-    .container { max-width: 860px; margin: 0 auto; }
+    .container { max-width: 900px; margin: 0 auto; }
     
     /* 頂部標題區 */
     header { margin-bottom: 36px; }
-    h1 { font-size: 2rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-    p.subtitle { font-size: 1rem; color: #64748b; margin-bottom: 12px; }
+    h1 { font-size: 2.1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    p.subtitle { font-size: 1.05rem; color: #64748b; margin-bottom: 14px; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag-main { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
     
-    /* 作品卡片 */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
-    @media (max-width: 480px) {
+    /* 網格版面 */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; }
+    @media (max-width: 500px) {
       .grid { grid-template-columns: 1fr; }
     }
     
     .card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 24px;
       display: flex;
       flex-direction: column;
@@ -35,10 +35,10 @@
     .card:hover {
       border-color: #cbd5e1;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
     }
     
-    .card-top { margin-bottom: 18px; }
+    .card-top { margin-bottom: 16px; }
     .badge {
       display: inline-block;
       font-size: 0.75rem;
@@ -47,6 +47,8 @@
       border-radius: 6px;
       margin-bottom: 12px;
     }
+    .badge-erp { background: #dbeafe; color: #1d4ed8; }
+    .badge-desktop { background: #f3e8ff; color: #7e22ce; }
     .badge-pet { background: #ffedd5; color: #c2410c; }
     .badge-3d { background: #fef3c7; color: #b45309; }
     .badge-game { background: #fce7f3; color: #be185d; }
@@ -54,9 +56,22 @@
 
     .card-title { font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
     .card-desc { font-size: 0.92rem; color: #475569; margin-bottom: 14px; text-align: justify; }
-    .card-tech { font-size: 0.8rem; color: #64748b; background: #f1f5f9; padding: 6px 10px; border-radius: 6px; font-family: ui-monospace, Menlo, monospace; }
+    .card-tech { font-size: 0.8rem; color: #64748b; background: #f1f5f9; padding: 7px 10px; border-radius: 6px; font-family: ui-monospace, Menlo, monospace; margin-bottom: 16px; }
 
-    /* 按鈕 */
+    /* 截圖展示區塊 */
+    .img-preview-group { display: flex; gap: 8px; margin-bottom: 14px; }
+    .img-thumb {
+      flex: 1;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .img-thumb:hover { opacity: 0.85; }
+
+    /* 操作連結按鈕 */
     .btn-link {
       display: inline-flex;
       align-items: center;
@@ -68,50 +83,103 @@
       font-size: 0.88rem;
       font-weight: 600;
       border-radius: 8px;
+      cursor: pointer;
+      border: none;
       transition: background 0.2s;
+      width: 100%;
     }
     .btn-link:hover { background: #2563eb; }
-    
-    footer { margin-top: 48px; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+
+    /* 圖片放大燈箱 Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal img { max-width: 90%; max-height: 85vh; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 25px;
+      font-size: 32px; color: #ffffff; cursor: pointer;
+    }
+
+    footer { margin-top: 50px; text-align: center; color: #94a3b8; font-size: 0.85rem; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Lynn ｜ 個人專案展示</h1>
-      <p class="subtitle">涵蓋全端雲端平台、3D 視覺互動運算、前端互動遊戲與 Mobile Web 音訊串流應用。</p>
+      <p class="subtitle">涵蓋企業級 ERP 協作系統、Python 桌面客戶端、全端雲端服務、3D 視覺互動與音訊工程。</p>
       <div class="tags">
-        <span class="tag-main">全端雲端應用</span>
+        <span class="tag-main">React 18 / Tailwind</span>
+        <span class="tag-main">Python (PyQt6 / VLC / yt-dlp)</span>
+        <span class="tag-main">GCP Cloud Run (Docker)</span>
         <span class="tag-main">Three.js / WebGL</span>
         <span class="tag-main">Web Audio API</span>
-        <span class="tag-main">Mobile-First UI</span>
       </div>
     </header>
 
     <div class="grid">
-      <!-- 專案 1：毛孩平台 -->
+      <!-- 專案 1：ERP 排程系統 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-erp">企業協作 · ERP 生產排程</span>
+          <h2 class="card-title">CloudSheet 生產排程與缺料系統</h2>
+          <p class="card-desc">專為製造業排程人員打造的現代化雲端協作系統。前端以 React 18 + Tailwind 打造雙向排程看板，後端運用 Google Apps Script 串接 Sheets 作為零維護雲端資料庫，支援 Excel 資料匯入（覆蓋/合併）、工單（WO）即時追蹤與缺料警報機制。</p>
+          <div class="card-tech">React 18 · Tailwind CSS · GAS · Excel Parser · ERP</div>
+          
+          <div class="img-preview-group">
+            <img src="erp-dashboard.png" alt="資料匯入與控制介面" class="img-thumb" onclick="openLightbox(this.src)">
+            <img src="erp-login.png" alt="系統登入介面" class="img-thumb" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+        <button class="btn-link" onclick="openLightbox('erp-dashboard.png')">查看高解析介面截圖 &rarr;</button>
+      </div>
+
+      <!-- 專案 2：桌面版音樂播放器 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-desktop">桌面客戶端 · 音訊多執行緒</span>
+          <h2 class="card-title">Lynn Pro Mini Player 桌面音樂播放器</h2>
+          <p class="card-desc">基於 Python PyQt6 與 libVLC 核心打造的極簡桌面音樂播放軟體。實作 QThread 多執行緒背景音訊串流抓取、lrclib 動態歌詞精確模糊對齊，具備拖曳佇列排序、智慧推薦電台演算法與自訂歌單 JSON 本機持久化功能。</p>
+          <div class="card-tech">Python · PyQt6 · libVLC · yt-dlp · lrclib · Multi-Threading</div>
+          
+          <div class="img-preview-group">
+            <img src="music-desktop.png" alt="電腦版播放器介面與佇列" class="img-thumb" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+        <button class="btn-link" onclick="openLightbox('music-desktop.png')">查看高解析介面截圖 &rarr;</button>
+      </div>
+
+      <!-- 專案 3：毛孩生活平台 -->
       <div class="card">
         <div class="card-top">
           <span class="badge badge-pet">全端雲端服務 · 生活應用</span>
           <h2 class="card-title">毛孩生活服務平台</h2>
-          <p class="card-desc">專為寵物飼主打造的整合型毛孩平台。後端採用容器化技術並部署於 Google Cloud Run，具備無伺服器（Serverless）高彈性擴展與穩定低延遲特性，展現完整的全端資料整合與現代雲端部署架構。</p>
+          <p class="card-desc">專為寵物飼主打造的整合型毛孩平台。後端採用容器化技術並部署於 Google Cloud Run，具備無伺服器（Serverless）高彈性擴展與穩定低延遲特性，展現全端架構與現代雲端部署實務。</p>
           <div class="card-tech">GCP Cloud Run · Docker · 全端服務架構 · Serverless</div>
         </div>
         <a href="https://service-217581946800.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-link">體驗毛孩平台 &rarr;</a>
       </div>
 
-      <!-- 專案 2：3D 夾娃娃機 -->
+      <!-- 專案 4：3D 夾娃娃機 -->
       <div class="card">
         <div class="card-top">
           <span class="badge badge-3d">3D 視覺運算 · 物理模擬</span>
           <h2 class="card-title">3D 擬真夾娃娃機 (Claw Machine 3D)</h2>
-          <p class="card-desc">以 Three.js / WebGL 技術建構的 3D 實時擬真夾娃娃機。實作動態攝影機追蹤視角、三軸爪夾精確控制與物體碰撞判定，兼顧電腦與行動裝置 60fps 渲染流暢度。</p>
+          <p class="card-desc">以 Three.js / WebGL 建構的 3D 實時擬真夾娃娃機。實作動態攝影機追蹤視角、三軸爪夾精確控制與物體碰撞判定，兼顧電腦與行動裝置 60fps 渲染流暢度。</p>
           <div class="card-tech">Three.js · WebGL · 3D 坐標物理邏輯 · GitHub Pages</div>
         </div>
         <a href="https://lynn780920.github.io/claw-machine-3d/" target="_blank" rel="noopener noreferrer" class="btn-link">立即遊玩 Demo &rarr;</a>
       </div>
 
-      <!-- 專案 3：社畜拉霸機 -->
+      <!-- 專案 5：社畜拉霸機 -->
       <div class="card">
         <div class="card-top">
           <span class="badge badge-game">前端互動邏輯 · 動畫演算法</span>
@@ -122,7 +190,7 @@
         <a href="https://lynn780920.github.io/corporate-slave-slot/" target="_blank" rel="noopener noreferrer" class="btn-link">立即遊玩 Demo &rarr;</a>
       </div>
 
-      <!-- 專案 4：手機版音樂播放器 -->
+      <!-- 專案 6：手機版音樂播放器 -->
       <div class="card">
         <div class="card-top">
           <span class="badge badge-audio">行動應用 · 音訊串流</span>
@@ -138,5 +206,21 @@
       © Lynn · 精選代表作品
     </footer>
   </div>
+
+  <!-- 點擊圖片放大檢視燈箱 -->
+  <div id="lightboxModal" class="modal" onclick="closeLightbox()">
+    <span class="modal-close">&times;</span>
+    <img id="lightboxImg" src="" alt="放大預覽" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
