@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lynn | 專案作品集</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+    body { background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 48px 20px; }
+    .container { max-width: 860px; margin: 0 auto; }
+    
+    /* 頂部標題區 */
+    header { margin-bottom: 36px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    p.subtitle { font-size: 1rem; color: #64748b; margin-bottom: 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-main { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+    
+    /* 作品卡片 */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card-top { margin-bottom: 18px; }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .badge-pet { background: #ffedd5; color: #c2410c; }
+    .badge-3d { background: #fef3c7; color: #b45309; }
+    .badge-game { background: #fce7f3; color: #be185d; }
+    .badge-audio { background: #dcfce7; color: #15803d; }
+
+    .card-title { font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .card-desc { font-size: 0.92rem; color: #475569; margin-bottom: 14px; text-align: justify; }
+    .card-tech { font-size: 0.8rem; color: #64748b; background: #f1f5f9; padding: 6px 10px; border-radius: 6px; font-family: ui-monospace, Menlo, monospace; }
+
+    /* 按鈕 */
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-link:hover { background: #2563eb; }
+    
+    footer { margin-top: 48px; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Lynn ｜ 個人專案展示</h1>
+      <p class="subtitle">涵蓋全端雲端平台、3D 視覺互動運算、前端互動遊戲與 Mobile Web 音訊串流應用。</p>
+      <div class="tags">
+        <span class="tag-main">全端雲端應用</span>
+        <span class="tag-main">Three.js / WebGL</span>
+        <span class="tag-main">Web Audio API</span>
+        <span class="tag-main">Mobile-First UI</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- 專案 1：毛孩平台 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-pet">全端雲端服務 · 生活應用</span>
+          <h2 class="card-title">毛孩生活服務平台</h2>
+          <p class="card-desc">專為寵物飼主打造的整合型毛孩平台。後端採用容器化技術並部署於 Google Cloud Run，具備無伺服器（Serverless）高彈性擴展與穩定低延遲特性，展現完整的全端資料整合與現代雲端部署架構。</p>
+          <div class="card-tech">GCP Cloud Run · Docker · 全端服務架構 · Serverless</div>
+        </div>
+        <a href="https://service-217581946800.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-link">體驗毛孩平台 &rarr;</a>
+      </div>
+
+      <!-- 專案 2：3D 夾娃娃機 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-3d">3D 視覺運算 · 物理模擬</span>
+          <h2 class="card-title">3D 擬真夾娃娃機 (Claw Machine 3D)</h2>
+          <p class="card-desc">以 Three.js / WebGL 技術建構的 3D 實時擬真夾娃娃機。實作動態攝影機追蹤視角、三軸爪夾精確控制與物體碰撞判定，兼顧電腦與行動裝置 60fps 渲染流暢度。</p>
+          <div class="card-tech">Three.js · WebGL · 3D 坐標物理邏輯 · GitHub Pages</div>
+        </div>
+        <a href="https://lynn780920.github.io/claw-machine-3d/" target="_blank" rel="noopener noreferrer" class="btn-link">立即遊玩 Demo &rarr;</a>
+      </div>
+
+      <!-- 專案 3：社畜拉霸機 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-game">前端互動邏輯 · 動畫演算法</span>
+          <h2 class="card-title">社畜拉霸機 (Corporate Slave Slot)</h2>
+          <p class="card-desc">以職場日常為題材的趣味拉霸遊戲。結合 CSS 關鍵影格動態演算與 JavaScript 滾輪隨機權重邏輯，實作拉桿擬真回彈微互動與遊戲結算機制。</p>
+          <div class="card-tech">JavaScript · CSS Animation · 隨機權重演算法 · GitHub Pages</div>
+        </div>
+        <a href="https://lynn780920.github.io/corporate-slave-slot/" target="_blank" rel="noopener noreferrer" class="btn-link">立即遊玩 Demo &rarr;</a>
+      </div>
+
+      <!-- 專案 4：手機版音樂播放器 -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-audio">行動應用 · 音訊串流</span>
+          <h2 class="card-title">手機版音樂播放器 (Lynn Music)</h2>
+          <p class="card-desc">專為行動裝置調校的音樂串流播放器。運用 Web Audio API 實作播放狀態控制、時間軸無縫跳轉與播放清單管理，全介面支援手機觸控手勢流暢操作。</p>
+          <div class="card-tech">Web Audio API · Mobile-First UI · 觸控互動 · Render Deploy</div>
+        </div>
+        <a href="https://lynn-music.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-link">開啟手機播放器 &rarr;</a>
+      </div>
+    </div>
+
+    <footer>
+      © Lynn · 精選代表作品
+    </footer>
+  </div>
+</body>
+</html>
