@@ -47,12 +47,12 @@
       border-radius: 6px;
       margin-bottom: 12px;
     }
+    .badge-pet { background: #dcfce7; color: #15803d; }
     .badge-erp { background: #dbeafe; color: #1d4ed8; }
     .badge-desktop { background: #f3e8ff; color: #7e22ce; }
-    .badge-pet { background: #ffedd5; color: #c2410c; }
     .badge-3d { background: #fef3c7; color: #b45309; }
     .badge-game { background: #fce7f3; color: #be185d; }
-    .badge-audio { background: #dcfce7; color: #15803d; }
+    .badge-audio { background: #e0f2fe; color: #0369a1; }
 
     .card-title { font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
     .card-desc { font-size: 0.92rem; color: #475569; margin-bottom: 14px; text-align: justify; }
@@ -115,24 +115,35 @@
   <div class="container">
     <header>
       <h1>Lynn ｜ 個人專案展示</h1>
-      <p class="subtitle">涵蓋企業級 ERP 協作系統、Python 桌面客戶端、全端雲端服務、3D 視覺互動與音訊工程。</p>
+      <p class="subtitle">涵蓋 LINE 整合雲端服務、企業級 ERP 排程系統、Python 桌面客戶端與 3D 互動運算。</p>
       <div class="tags">
-        <span class="tag-main">React 18 / Tailwind</span>
-        <span class="tag-main">Python (PyQt6 / VLC / yt-dlp)</span>
+        <span class="tag-main">LINE Login / OAuth 2.0</span>
         <span class="tag-main">GCP Cloud Run (Docker)</span>
+        <span class="tag-main">React 18 / Tailwind</span>
+        <span class="tag-main">Python PyQt6 多執行緒</span>
         <span class="tag-main">Three.js / WebGL</span>
-        <span class="tag-main">Web Audio API</span>
       </div>
     </header>
 
     <div class="grid">
-      <!-- 專案 1：ERP 排程系統 -->
+      <!-- 專案 1：毛孩平台 (加入 LINE 會員認證介紹) -->
+      <div class="card">
+        <div class="card-top">
+          <span class="badge badge-pet">LINE 認證整合 · 全端雲端微服務</span>
+          <h2 class="card-title">毛孩生活服務平台</h2>
+          <p class="card-desc">專為寵物飼主打造的現代化毛孩平台。整合 <strong>LINE Login (OAuth 2.0)</strong> 第三方會員快速認證授權機制，實現無痛登入與使用者資料管理；後端容器化並部署於 Google Cloud Run，具備無伺服器（Serverless）高彈性擴展與極低冷啟動延遲特性。</p>
+          <div class="card-tech">LINE Login API · OAuth 2.0 · GCP Cloud Run · Docker · 全端架構</div>
+        </div>
+        <a href="https://service-217581946800.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-link">體驗毛孩平台 (線上 Demo) &rarr;</a>
+      </div>
+
+      <!-- 專案 2：ERP 排程系統 -->
       <div class="card">
         <div class="card-top">
           <span class="badge badge-erp">企業協作 · ERP 生產排程</span>
           <h2 class="card-title">CloudSheet 生產排程與缺料系統</h2>
           <p class="card-desc">專為製造業排程人員打造的現代化雲端協作系統。前端以 React 18 + Tailwind 打造雙向排程看板，後端運用 Google Apps Script 串接 Sheets 作為零維護雲端資料庫，支援 Excel 資料匯入（覆蓋/合併）、工單（WO）即時追蹤與缺料警報機制。</p>
-          <div class="card-tech">React 18 · Tailwind CSS · GAS · Excel Parser · ERP</div>
+          <div class="card-tech">React 18 · Tailwind CSS · Google Apps Script · Excel 解析</div>
           
           <div class="img-preview-group">
             <img src="erp-dashboard.png" alt="資料匯入與控制介面" class="img-thumb" onclick="openLightbox(this.src)">
@@ -142,7 +153,7 @@
         <button class="btn-link" onclick="openLightbox('erp-dashboard.png')">查看高解析介面截圖 &rarr;</button>
       </div>
 
-      <!-- 專案 2：桌面版音樂播放器 -->
+      <!-- 專案 3：桌面版音樂播放器 -->
       <div class="card">
         <div class="card-top">
           <span class="badge badge-desktop">桌面客戶端 · 音訊多執行緒</span>
@@ -155,17 +166,6 @@
           </div>
         </div>
         <button class="btn-link" onclick="openLightbox('music-desktop.png')">查看高解析介面截圖 &rarr;</button>
-      </div>
-
-      <!-- 專案 3：毛孩生活平台 -->
-      <div class="card">
-        <div class="card-top">
-          <span class="badge badge-pet">全端雲端服務 · 生活應用</span>
-          <h2 class="card-title">毛孩生活服務平台</h2>
-          <p class="card-desc">專為寵物飼主打造的整合型毛孩平台。後端採用容器化技術並部署於 Google Cloud Run，具備無伺服器（Serverless）高彈性擴展與穩定低延遲特性，展現全端架構與現代雲端部署實務。</p>
-          <div class="card-tech">GCP Cloud Run · Docker · 全端服務架構 · Serverless</div>
-        </div>
-        <a href="https://service-217581946800.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-link">體驗毛孩平台 &rarr;</a>
       </div>
 
       <!-- 專案 4：3D 夾娃娃機 -->
